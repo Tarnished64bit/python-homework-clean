@@ -11,3 +11,4 @@ print("Каталог смартфонов:")
 
 for phone in catalog:
     print(phone.brand + " - " + phone.model + ". " + phone.number)
+    
