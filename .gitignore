@@ -1,0 +1,11 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# WebDrivers
+chromedriver-win64/
+geckodriver.exe
+
+# Virtual environment
+venv/
+env/
