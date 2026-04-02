@@ -1,3 +1,5 @@
+
+
 class TestProjectsAPI:
 
     def test_create_project_positive(self, projects_api):
@@ -27,7 +29,8 @@ class TestProjectsAPI:
         assert "title" in data, "Отсутствует поле title"
         assert "timestamp" in data, "Отсутствует поле timestamp"
 
-    def test_update_project_title_positive(self, projects_api, created_project):
+    def test_update_project_title_positive(
+            self, projects_api, created_project):
         new_title = "Updated Project Name"
         response = projects_api.update_project(
             project_id=created_project,
