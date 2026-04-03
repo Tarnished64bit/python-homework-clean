@@ -5,7 +5,7 @@ class TestProjectsAPI:
         response = projects_api.create_project(title=title)
 
         assert response.status_code == 201, (
-            "Статус код" + str(response.status_code) +
+            "Статус код " + str(response.status_code) +
             "\nОтвет: " + response.text
         )
 
@@ -19,7 +19,7 @@ class TestProjectsAPI:
         response = projects_api.get_project(created_project)
 
         assert response.status_code == 200, (
-            "Статус код" + str(response.status_code)
+            "Статус код " + str(response.status_code)
         )
 
         data = response.json()
@@ -27,7 +27,8 @@ class TestProjectsAPI:
         assert "title" in data, "Отсутствует поле title"
         assert "timestamp" in data, "Отсутствует поле timestamp"
 
-    def test_update_project_title_positive(self, projects_api, created_project):
+    def test_update_project_title_positive(
+            self, projects_api, created_project):
         new_title = "Updated Project Name"
         response = projects_api.update_project(
             project_id=created_project,
@@ -35,8 +36,9 @@ class TestProjectsAPI:
         )
 
         assert response.status_code == 200, (
-            "Статус код" + str(response.status_code)
+            "Статус код " + str(response.status_code)
         )
 
         get_response = projects_api.get_project(created_project)
-        assert get_response.json().get("title") == new_title
+        assert get_response.json().get("title") == new_title, \
+            "Название не обновилось"

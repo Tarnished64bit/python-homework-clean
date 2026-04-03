@@ -21,7 +21,7 @@ class ProjectsAPI:
             data["deleted"] = deleted
 
         if not data:
-            raise ValueError("Ошибка")
+            raise ValueError("Не передано ни одного поля")
 
         return self.client.put("/projects/" + project_id, data)
 
