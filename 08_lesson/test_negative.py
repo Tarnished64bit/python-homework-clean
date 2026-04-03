@@ -7,7 +7,7 @@ class TestProjectsAPI:
         response = projects_api.create_project(title="")
 
         assert response.status_code == 400, (
-            "Статус код" + str(response.status_code)
+            "Статус код " + str(response.status_code)
         )
 
     def test_get_nonexistent_project_negative(self, projects_api):
@@ -15,7 +15,7 @@ class TestProjectsAPI:
         response = projects_api.get_project(fake_id)
 
         assert response.status_code == 404, (
-            "Статус код" + str(response.status_code)
+            "Статус код " + str(response.status_code)
         )
 
     def test_update_nonexistent_project_negative(self, projects_api):
@@ -26,12 +26,10 @@ class TestProjectsAPI:
         )
 
         assert response.status_code == 404, (
-            "Статус код" + str(response.status_code)
+            "Статус код " + str(response.status_code)
         )
 
     def test_update_project_without_data_negative(
             self, projects_api, created_project):
-        with pytest.raises(ValueError) as exc_info:
+        with pytest.raises(ValueError, match="Не передано ни одного поля"):
             projects_api.update_project(project_id=created_project)
-
-        assert "Не передано ни одного поля" in str(exc_info.value)

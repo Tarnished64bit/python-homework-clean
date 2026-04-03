@@ -1,5 +1,3 @@
-
-
 class TestProjectsAPI:
 
     def test_create_project_positive(self, projects_api):
@@ -7,7 +5,7 @@ class TestProjectsAPI:
         response = projects_api.create_project(title=title)
 
         assert response.status_code == 201, (
-            "Статус код" + str(response.status_code) +
+            "Статус код " + str(response.status_code) +
             "\nОтвет: " + response.text
         )
 
@@ -21,7 +19,7 @@ class TestProjectsAPI:
         response = projects_api.get_project(created_project)
 
         assert response.status_code == 200, (
-            "Статус код" + str(response.status_code)
+            "Статус код " + str(response.status_code)
         )
 
         data = response.json()
@@ -38,8 +36,9 @@ class TestProjectsAPI:
         )
 
         assert response.status_code == 200, (
-            "Статус код" + str(response.status_code)
+            "Статус код " + str(response.status_code)
         )
 
         get_response = projects_api.get_project(created_project)
-        assert get_response.json().get("title") == new_title
+        assert get_response.json().get("title") == new_title, \
+            "Название не обновилось"
