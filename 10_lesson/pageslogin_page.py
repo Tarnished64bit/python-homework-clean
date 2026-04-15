@@ -26,7 +26,7 @@ class LoginPage:
 
     def login(self, username: str, password: str) -> InventoryPage:
         """
-        Выполняет вход в систему.
+        Выполняет вход в данную систему.
 
         :param username: Имя пользователя
         :param password: Пароль
